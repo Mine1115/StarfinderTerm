@@ -54,6 +54,7 @@
 #batterylevel {
     top: -1px;
     font-size: 12px;
+    color: rgba(48, 48, 48, 0.4);
 }
 
 #batterylevelimg {
