@@ -42,6 +42,21 @@
     font-size: 25px;
 }
 #notifactationBar {
+    width: 100vw;
     position: fixed;
     top: 0px;
+}
+#notifactationBar .barRight{
+    position: fixed;
+    right: 30px;
+}
+
+#batterylevel {
+    top: -1px;
+    font-size: 12px;
+}
+
+#batterylevelimg {
+    top: 2px;
+    width: 30px;
 }
