@@ -5,7 +5,9 @@
         <link rel="stylesheet" href="assets/css/homescreen.css">
     </head>
     <body>
-        <div id="notifactationBar"></div>
+        <div id="notifactationBar">
+            <p id="batterylevel"></p>
+        </div>
         <div id="homescreen">
             <div>
                 <button class="apps" onclick="openapp('Aspis Database');">
@@ -20,6 +22,8 @@
         <div id="navagation">
             <button onclick="homebutton();">o</button>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+        <script>eruda.init();</script>
         <script>
             async function openapp(appname) {
                 const homescreen = document.getElementById("homescreen")
@@ -51,13 +55,29 @@
                 homescreen.style.display = 'flex';
                 appscreen.style.display = 'none';
             }
-            function updateNotifactionBar() {
+            async function updateNotifactionBar() {
                 const bar = document.getElementById("notifactationBar");
+                const batteryleveltext = document.getElementById("batterylevel");
 
                 //battery
-                const BatteryManager = Navigator.getBattery();
-                BatteryManager.requestBattery();
-                console.log(BatteryManager.level)
+                // Check if API exists 
+                if (!('getBattery' in navigator)) { 
+                    console.log("unsuported")
+                } 
+                    try { const battery = await navigator.getBattery(); // Check if returning real or default values const 
+                        // Real battery data 
+                        console.log({ 
+                                supported: true, 
+                                blocked: false, 
+                                level: Math.floor(battery.level * 100), 
+                                charging: battery.charging, 
+                                chargingTime: battery.chargingTime, 
+                                dischargingTime: battery.dischargingTime 
+                            }); 
+                        batteryleveltext.textContent = `${battery.level*100}%`
+                    } catch (error) { 
+                    console.log(error)
+                }
             }
             updateNotifactionBar();
         </script>

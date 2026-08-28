@@ -41,3 +41,7 @@
     border-color: transparent;
     font-size: 25px;
 }
+#notifactationBar {
+    position: fixed;
+    top: 0px;
+}
