@@ -32,6 +32,7 @@
             <button onclick="homebutton();">o</button>
         </div>
         <script>
+            const baseurl = window.location;
             async function openapp(appname) {
                 const homescreen = document.getElementById("homescreen")
                 const appscreen = document.getElementById("appscreen")
@@ -84,7 +85,7 @@
                             });*/
                         batteryleveltext.textContent = `${Math.round(battery.level*100)}%`
                         if (Math.round(battery.level*100)>92) { //0
-                            batterylevelimg.src = "/assets/icons/batterys/battery-0.png"
+                            batterylevelimg.src = baseurl+"/assets/icons/batterys/battery-0.png"
                         } else if (Math.round(battery.level*100)>93) { //1
                             batterylevelimg.src = "/assets/icons/batterys/battery-1.png"
                         } else if (Math.round(battery.level*100)>86) { //2
