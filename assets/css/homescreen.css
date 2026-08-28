@@ -1,0 +1,43 @@
+.apps {
+    border-style: solid;
+    border-width: 1px;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+    border-radius: 10px;
+    backdrop-filter: rgba(100,100,100,0.5);
+}
+.apps img {
+    position: relative;
+    left: -5px
+}
+.appname {
+    position: relative;
+    top: -30px;
+    text-align: center;
+}
+#homescreen {
+    display: flex;
+}
+#appscreen {
+    display: none;
+}
+#navagation {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 0px;
+    left: 0;
+    background-color: rgba(74, 74, 74, .5);
+    width: 100vw;
+    height: 60px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+#navagation button {
+    background-color: transparent;
+    border-color: transparent;
+    font-size: 25px;
+}

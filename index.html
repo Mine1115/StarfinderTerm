@@ -2,8 +2,64 @@
 <html>
     <head>
         <title>user termanal</title>
+        <link rel="stylesheet" href="assets/css/homescreen.css">
     </head>
     <body>
-        <div id="homescreen"><div><img src="assets/icons/Database.png"><br><p>Database</p></div>
+        <div id="notifactationBar"></div>
+        <div id="homescreen">
+            <div>
+                <button class="apps" onclick="openapp('Aspis Database');">
+                    <img src="assets/icons/Database.png">
+                </button><br>
+                <p class="appname">Aspis Database</p>
+            </div>
+        </div>
+        <div id="appscreen">
+            <p>app screen</p>
+        </div>
+        <div id="navagation">
+            <button onclick="homebutton();">o</button>
+        </div>
+        <script>
+            async function openapp(appname) {
+                const homescreen = document.getElementById("homescreen")
+                const appscreen = document.getElementById("appscreen")
+                homescreen.style.display = 'none';
+                appscreen.style.display = 'initial';
+                if (appname == "Aspis Database") {
+                    appscreen.innerHTML = ''
+                    try {
+                        await fetch("/AspisDatabase.html")
+                        .then((response) => {
+                            if (!response.ok) {
+                                appscreen.innerHTML = `server not ok. status: ${response.status}`
+                            }
+                            return response.text();
+                        })
+                        .then((text) => {
+                            appscreen.innerHTML = text
+                        })
+                        
+                    } catch (error) {
+                        appscreen.innerHTML = `error occured <br>error: ${error.message}`
+                    }
+                }
+            }
+            function homebutton() {
+                const homescreen = document.getElementById("homescreen")
+                const appscreen = document.getElementById("appscreen")
+                homescreen.style.display = 'flex';
+                appscreen.style.display = 'none';
+            }
+            function updateNotifactionBar() {
+                const bar = document.getElementById("notifactationBar");
+
+                //battery
+                const BatteryManager = Navigator.getBattery();
+                BatteryManager.requestBattery();
+                console.log(BatteryManager.level)
+            }
+            updateNotifactionBar();
+        </script>
     </body>
 </html>
