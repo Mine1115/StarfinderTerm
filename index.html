@@ -23,7 +23,10 @@
             <button onclick="homebutton();">o</button>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
-        <script>eruda.init();</script>
+        <script>
+            if (!window.location.href.startsWith("mine1115.github.io"))
+            eruda.init();
+        </script>
         <script>
             async function openapp(appname) {
                 const homescreen = document.getElementById("homescreen")
@@ -63,20 +66,22 @@
                 // Check if API exists 
                 if (!('getBattery' in navigator)) { 
                     console.log("unsuported")
-                } 
-                    try { const battery = await navigator.getBattery(); // Check if returning real or default values const 
+                } else {
+                    try { 
+                        const battery = await navigator.getBattery();
                         // Real battery data 
-                        console.log({ 
+                        /*console.log({ 
                                 supported: true, 
                                 blocked: false, 
                                 level: Math.floor(battery.level * 100), 
                                 charging: battery.charging, 
                                 chargingTime: battery.chargingTime, 
                                 dischargingTime: battery.dischargingTime 
-                            }); 
+                            });*/
                         batteryleveltext.textContent = `${battery.level*100}%`
                     } catch (error) { 
                     console.log(error)
+                    }
                 }
             }
             updateNotifactionBar();
