@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>user termanal</title>
-        <link rel="stylesheet" href="assets/css/homescreen.css">
+        <link rel="stylesheet" href="/assets/css/homescreen.css">
     </head>
     <body>
         <div id="notifactationBar">
@@ -27,6 +27,8 @@
         <script>
             if (!window.location.href.startsWith("https://mine1115.github.io")) {
                 eruda.init();
+            } else {
+                document.head.innerHTML += "<base href='https://mine1115.github.io/StarfinderTerm/'>"
             }
         </script>
         <script>
